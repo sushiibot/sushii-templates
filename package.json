@@ -1,0 +1,13 @@
+{
+  "scripts": {
+    "start": "node src/index.js",
+    "build": "tailwindcss build ./src/tailwind.css -o ./dist/tailwind.css"
+  },
+  "dependencies": {
+    "handlebars": "^4.7.6",
+    "koa": "^2.13.0",
+    "koa-static": "^5.0.0",
+    "tailwindcss": "^2.0.1",
+    "tailwindcss-cli": "^0.1.2"
+  }
+}
