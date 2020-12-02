@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="/dist/tailwind.css">
+    <style type="text/css">
+        html,
+        body {
+            width: 500px;
+            height: 268px;
+            margin: 0;
+            padding: 0;
+        }
+
+        .hero {
+            background-color: rgba({{CONTENT_COLOR}}, {{CONTENT_OPACITY}});
+        }
+    </style>
+</head>
+
+<body class="bg-gray-900 text-gray-200">
+    <div class="container p-2">
+        <div class="flex p-3 bg-gray-800 rounded">
+            <!-- Avatar -->
+            <div class="relative mr-3 self-center">
+                <img class="rounded-full w-40 shadow-md" src="{{ AVATAR_URL }}">
+                <div class="rounded-full w-5 h-5 ring-4 bg-green-400 ring-gray-800 absolute bottom-0 right-3 z-10 ">
+                </div>
+            </div>
+            <!-- Userinfo -->
+            <div class="p-3 w-full">
+                <h1 class="text-2xl font-medium">{{ USERNAME }}
+                    <img class="w-5 inline-block" src="http://localhost:8000/static/img/{{ PATRON_EMOJI }}.png" style="display:none;">
+                </h1>
+                <div class="bg-gray-700 rounded mt-1 p-3 grid grid-cols-2">
+                    <div>
+                        <p class="inline-block text-2xl font-medium">{{ REP }}</p>
+                        <p>
+                            Rep
+                            <img class="w-5 inline-block" src="http://localhost:8000/static/img/{{REP_EMOJI}}.png">
+                        </p>
+                    </div>
+                    <div>
+                        <p class="inline-block text-2xl font-medium">{{ FISHIES }}</p>
+                        <p>
+                            Fishies
+                            <img class="w-5 inline-block" src="http://localhost:8000/static/img/fishy.png">
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="p-3">
+            <div class="mt-1 mb-1 w-full h-1 bg-gray-800 rounded">
+                <div class="rounded h-full bg-gradient-to-r from-teal-400 to-blue-500" style="width: {{ XP_PROGRESS }}%"></div>
+            </div>
+            <div class="float-left">
+                LEVEL {{ LEVEL }} - GLOBAL LEVEL {{ GLOBAL_LEVEL }}
+            </div>
+            <div class="float-right">
+                {{ CURR_LEVEL_XP }} / {{ LEVEL_XP_REQ }} XP
+            </div>
+            <div style="clear: both; margin-bottom:10px"></div>
+            <h6 class="title is-6">
+                RANKING
+            </h6>
+            <div class="columns is-mobile has-text-centered">
+                <div class="column is-3">
+                    <h3>
+                        DAILY
+                        <br> {{ DAILY }}
+                    </h3>
+                </div>
+                <div class="column is-3">
+                    <h3>
+                        WEEKLY
+                        <br> {{ WEEKLY }}
+                    </h3>
+                </div>
+                <div class="column is-3">
+                    <h3>
+                        MONTHLY
+                        <br> {{ MONTHLY }}
+                    </h3>
+                </div>
+                <div class="column is-3">
+                    <h3>
+                        ALL TIME
+                        <br> {{ ALL }}
+                    </h3>
+                </div>
+                <hr>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
