@@ -39,6 +39,10 @@
         <div class="grid grid-cols-2 gap-x-3">
             <!-- Left side -->
             <div>
+                <!-- Badges and emojis -->
+                <div class="p-3 pt-0 h-10">
+                    <img class="w-6 inline-block" src="http://localhost:8000/static/img/{{ PATRON_EMOJI }}.png">
+                </div>
                 <!-- Rep and Fishies -->
                 <div class="p-3 pt-0 grid grid-cols-2">
                     <div>
@@ -56,43 +60,28 @@
                         </p>
                     </div>
                 </div>
-                <!-- Badges and emojis -->
-                <div class="p-3 pt-0">
-                    <img class="w-6 inline-block" src="http://localhost:8000/static/img/{{ PATRON_EMOJI }}.png">
-                </div>
                 <!-- Level and XP bars -->
                 <div class="p-3 bg-gray-900 rounded">
-                    <div class="flex justify-between items-end">
-                        <p class="leading-3">
-                            Level
-                            <br>
-                            <span class="text-2xl font-medium">
-                                {{ LEVEL }}
-                            </span>
-                        </p>
-                        <p class="text-sm text-gray-500">
-                            {{ CURR_LEVEL_XP }} / {{ LEVEL_XP_REQ }} XP
-                        </p>
-                    </div>
-                    <div class="mt-1 mb-1 w-full h-1 bg-gray-800 rounded">
-                        <div class="rounded h-full bg-gradient-to-r from-teal-400 to-blue-500" style="width: {{ XP_PROGRESS }}%"></div>
-                    </div>
-
-                    <div class="mt-4 flex justify-between items-end">
-                        <p class="leading-3">
-                            Global Level
-                            <br>
-                            <span class="text-2xl font-medium">
-                                {{ GLOBAL_LEVEL }}
-                            </span>
-                        </p>
-                        <p class="text-sm text-gray-500">
-                            {{ CURR_LEVEL_XP }} / {{ LEVEL_XP_REQ }} XP
-                        </p>
-                    </div>
-                    <div class="mt-1 mb-1 w-full h-1 bg-gray-800 rounded">
-                        <div class="rounded h-full bg-gradient-to-r from-teal-400 to-blue-500" style="width: {{ XP_PROGRESS }}%"></div>
-                    </div>
+                    {{#*inline "level" }}
+                        <div class="flex justify-between items-end">
+                            <p class="leading-4">
+                                {{ name }}
+                                <br>
+                                <span class="text-2xl font-medium">
+                                    {{ level }}
+                                </span>
+                            </p>
+                            <p class="text-sm text-gray-500">
+                                {{ xp }} / {{ level_xp }} XP
+                            </p>
+                        </div>
+                        <div class="mt-1 mb-1 w-full h-1 bg-gray-800 rounded">
+                            <div class="rounded h-full bg-gradient-to-r from-teal-400 to-blue-500" style="width: {{ XP_PROGRESS }}%"></div>
+                        </div>
+                    {{/inline}}
+                    {{> level name="level" level=LEVEL xp=CURR_XP level_xp=REQ_XP }}
+                    <div class="h-4"></div>
+                    {{> level name="global level" level=GLOBAL_LEVEL xp=GLOBAL_CURR_XP level_xp=GLOBAL_REQ_XP }}
                 </div>
             </div>
             <!-- Ranking -->
@@ -100,31 +89,26 @@
                 <h6 class="text-2xl font-medium">
                     rank
                 </h6>
-                <div class="columns is-mobile has-text-centered">
-                    <div class="column is-3">
-                        <h3>
-                            day
-                            <br> {{ DAILY }}
-                        </h3>
-                    </div>
-                    <div class="column is-3">
-                        <h3>
-                            week
-                            <br> {{ WEEKLY }}
-                        </h3>
-                    </div>
-                    <div class="column is-3">
-                        <h3>
-                            month
-                            <br> {{ MONTHLY }}
-                        </h3>
-                    </div>
-                    <div class="column is-3">
-                        <h3>
-                            all
-                            <br> {{ ALL }}
-                        </h3>
-                    </div>
+                <div class="">
+                    {{#*inline "rank" }}
+                        <div class="flex justify-between items-center">
+                            <p>
+                                <span class="text-2xl font-medium">
+                                    {{ rank }}
+                                </span>
+                                <span class="text-sm text-gray-600">
+                                    / {{ total }}
+                                </span>
+                            </p>
+                            <p class="text-gray-500">
+                                {{ name }}
+                            </p>
+                        </div>
+                    {{/inline}}
+                    {{> rank name="all" rank=RANK_ALL total=RANK_ALL_TOTAL }}
+                    {{> rank name="day" rank=RANK_DAY total=RANK_DAY_TOTAL }}
+                    {{> rank name="week" rank=RANK_WEEK total=RANK_WEEK_TOTAL }}
+                    {{> rank name="month" rank=RANK_MONTH total=RANK_MONTH_TOTAL }}
                 </div>
             </div>
         </div>
