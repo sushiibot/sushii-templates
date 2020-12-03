@@ -7,6 +7,11 @@ module.exports = {
     extend: {
       colors: {
         teal: colors.teal,
+        gray: {
+          1000: '#0a0e14',
+          900: '#161d28',
+          800: '#5a6171',
+        }
       }
     },
     fontFamily: {
