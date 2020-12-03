@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="/static/tailwind.css">
+    <link rel="stylesheet" href="{{ BASE_URL }}/static/tailwind.css">
     <style type="text/css">
         html,
         body {
@@ -41,7 +41,9 @@
             <div>
                 <!-- Badges and emojis -->
                 <div class="p-3 pt-0 h-10">
-                    <img class="w-6 inline-block" src="http://localhost:8000/static/img/{{ PATRON_EMOJI }}.png">
+                    {{#if IS_PATRON }}
+                    <img class="w-6 inline-block" src="{{ BASE_URL }}/static/img/{{ PATRON_EMOJI }}.png">
+                    {{/if}}
                 </div>
                 <!-- Rep and Fishies -->
                 <div class="p-3 pt-0 grid grid-cols-2">
@@ -49,14 +51,14 @@
                         <p class="inline-block text-2xl font-medium">{{ REP }}</p>
                         <p class="text-gray-400">
                             rep
-                            <img class="w-5 inline-block" src="http://localhost:8000/static/img/{{REP_EMOJI}}.png">
+                            <img class="w-5 inline-block" src="{{ BASE_URL }}/static/img/{{REP_LEVEL}}.png">
                         </p>
                     </div>
                     <div class="text-right">
                         <p class="inline-block text-2xl font-medium">{{ FISHIES }}</p>
                         <p class="text-gray-400">
                             fishies
-                            <img class="w-5 inline-block" src="http://localhost:8000/static/img/fishy.png">
+                            <img class="w-5 inline-block" src="{{ BASE_URL }}/static/img/fishy.png">
                         </p>
                     </div>
                 </div>
