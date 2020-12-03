@@ -67,7 +67,7 @@
                             <p class="leading-4">
                                 {{ name }}
                                 <br>
-                                <span class="text-2xl font-medium">
+                                <span class="text-3xl font-medium">
                                     {{ level }}
                                 </span>
                             </p>
@@ -76,12 +76,12 @@
                             </p>
                         </div>
                         <div class="mt-1 mb-1 w-full h-1 bg-gray-800 rounded">
-                            <div class="rounded h-full bg-gradient-to-r from-teal-400 to-blue-500" style="width: {{ XP_PROGRESS }}%"></div>
+                            <div class="rounded h-full bg-gradient-to-r from-teal-400 to-blue-500" style="width: {{ progress }}%"></div>
                         </div>
                     {{/inline}}
-                    {{> level name="level" level=LEVEL xp=CURR_XP level_xp=REQ_XP }}
+                    {{> level name="level" level=LEVEL xp=CURR_XP level_xp=REQ_XP progress=XP_PROGRESS }}
                     <div class="h-4"></div>
-                    {{> level name="global level" level=GLOBAL_LEVEL xp=GLOBAL_CURR_XP level_xp=GLOBAL_REQ_XP }}
+                    {{> level name="global level" level=GLOBAL_LEVEL xp=GLOBAL_CURR_XP level_xp=GLOBAL_REQ_XP progress=GLOBAL_XP_PROGRESS }}
                 </div>
             </div>
             <!-- Ranking -->
@@ -89,11 +89,11 @@
                 <h6 class="text-2xl font-medium">
                     rank
                 </h6>
-                <div class="">
+                <div class="mt-1 grid grid-rows-4 gap-4">
                     {{#*inline "rank" }}
                         <div class="flex justify-between items-center">
                             <p>
-                                <span class="text-2xl font-medium">
+                                <span class="text-4xl font-medium">
                                     {{ rank }}
                                 </span>
                                 <span class="text-sm text-gray-600">
