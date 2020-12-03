@@ -9,89 +9,123 @@
         html,
         body {
             width: 500px;
-            height: 268px;
+            height: 400px;
             margin: 0;
             padding: 0;
-        }
-
-        .hero {
-            background-color: rgba({{CONTENT_COLOR}}, {{CONTENT_OPACITY}});
+            background: #000;
         }
     </style>
 </head>
 
-<body class="bg-gray-900 text-gray-200">
+<body class="p-2 bg-gray-1000 text-gray-200">
     <div class="container p-2">
-        <div class="flex p-3 bg-gray-800 rounded">
+        <div class="p-3 flex items-center">
             <!-- Avatar -->
-            <div class="relative mr-3 self-center">
-                <img class="rounded-full w-40 shadow-md" src="{{ AVATAR_URL }}">
-                <div class="rounded-full w-5 h-5 ring-4 bg-green-400 ring-gray-800 absolute bottom-0 right-3 z-10 ">
+            <div class="relative mr-3">
+                <img class="rounded-full w-20 shadow-md" src="{{ AVATAR_URL }}">
+                <!-- Online status -->
+                <div class="rounded-full w-4 h-4 ring-4 bg-green-400 ring-gray-1000 absolute bottom-0 right-1 z-10">
                 </div>
             </div>
             <!-- Userinfo -->
-            <div class="p-3 w-full">
-                <h1 class="text-2xl font-medium">{{ USERNAME }}
-                    <img class="w-5 inline-block" src="http://localhost:8000/static/img/{{ PATRON_EMOJI }}.png" style="display:none;">
+            <div class="w-full self-end">
+                <h1 class="text-4xl font-medium leading-5">
+                    {{ USERNAME }}
+                    <br>
+                    <span class="text-lg text-gray-500">#{{ DISCRIMINATOR }}</span>
                 </h1>
-                <div class="bg-gray-700 rounded mt-1 p-3 grid grid-cols-2">
+            </div>
+        </div>
+        <div class="grid grid-cols-2 gap-x-3">
+            <!-- Left side -->
+            <div>
+                <!-- Rep and Fishies -->
+                <div class="p-3 pt-0 grid grid-cols-2">
                     <div>
                         <p class="inline-block text-2xl font-medium">{{ REP }}</p>
-                        <p>
-                            Rep
+                        <p class="text-gray-400">
+                            rep
                             <img class="w-5 inline-block" src="http://localhost:8000/static/img/{{REP_EMOJI}}.png">
                         </p>
                     </div>
-                    <div>
+                    <div class="text-right">
                         <p class="inline-block text-2xl font-medium">{{ FISHIES }}</p>
-                        <p>
-                            Fishies
+                        <p class="text-gray-400">
+                            fishies
                             <img class="w-5 inline-block" src="http://localhost:8000/static/img/fishy.png">
                         </p>
                     </div>
                 </div>
-            </div>
-        </div>
-        <div class="p-3">
-            <div class="mt-1 mb-1 w-full h-1 bg-gray-800 rounded">
-                <div class="rounded h-full bg-gradient-to-r from-teal-400 to-blue-500" style="width: {{ XP_PROGRESS }}%"></div>
-            </div>
-            <div class="float-left">
-                LEVEL {{ LEVEL }} - GLOBAL LEVEL {{ GLOBAL_LEVEL }}
-            </div>
-            <div class="float-right">
-                {{ CURR_LEVEL_XP }} / {{ LEVEL_XP_REQ }} XP
-            </div>
-            <div style="clear: both; margin-bottom:10px"></div>
-            <h6 class="title is-6">
-                RANKING
-            </h6>
-            <div class="columns is-mobile has-text-centered">
-                <div class="column is-3">
-                    <h3>
-                        DAILY
-                        <br> {{ DAILY }}
-                    </h3>
+                <!-- Badges and emojis -->
+                <div class="p-3 pt-0">
+                    <img class="w-6 inline-block" src="http://localhost:8000/static/img/{{ PATRON_EMOJI }}.png">
                 </div>
-                <div class="column is-3">
-                    <h3>
-                        WEEKLY
-                        <br> {{ WEEKLY }}
-                    </h3>
+                <!-- Level and XP bars -->
+                <div class="p-3 bg-gray-900 rounded">
+                    <div class="flex justify-between items-end">
+                        <p class="leading-3">
+                            Level
+                            <br>
+                            <span class="text-2xl font-medium">
+                                {{ LEVEL }}
+                            </span>
+                        </p>
+                        <p class="text-sm text-gray-500">
+                            {{ CURR_LEVEL_XP }} / {{ LEVEL_XP_REQ }} XP
+                        </p>
+                    </div>
+                    <div class="mt-1 mb-1 w-full h-1 bg-gray-800 rounded">
+                        <div class="rounded h-full bg-gradient-to-r from-teal-400 to-blue-500" style="width: {{ XP_PROGRESS }}%"></div>
+                    </div>
+
+                    <div class="mt-4 flex justify-between items-end">
+                        <p class="leading-3">
+                            Global Level
+                            <br>
+                            <span class="text-2xl font-medium">
+                                {{ GLOBAL_LEVEL }}
+                            </span>
+                        </p>
+                        <p class="text-sm text-gray-500">
+                            {{ CURR_LEVEL_XP }} / {{ LEVEL_XP_REQ }} XP
+                        </p>
+                    </div>
+                    <div class="mt-1 mb-1 w-full h-1 bg-gray-800 rounded">
+                        <div class="rounded h-full bg-gradient-to-r from-teal-400 to-blue-500" style="width: {{ XP_PROGRESS }}%"></div>
+                    </div>
                 </div>
-                <div class="column is-3">
-                    <h3>
-                        MONTHLY
-                        <br> {{ MONTHLY }}
-                    </h3>
+            </div>
+            <!-- Ranking -->
+            <div class="p-3 bg-gray-900 rounded">
+                <h6 class="text-2xl font-medium">
+                    rank
+                </h6>
+                <div class="columns is-mobile has-text-centered">
+                    <div class="column is-3">
+                        <h3>
+                            day
+                            <br> {{ DAILY }}
+                        </h3>
+                    </div>
+                    <div class="column is-3">
+                        <h3>
+                            week
+                            <br> {{ WEEKLY }}
+                        </h3>
+                    </div>
+                    <div class="column is-3">
+                        <h3>
+                            month
+                            <br> {{ MONTHLY }}
+                        </h3>
+                    </div>
+                    <div class="column is-3">
+                        <h3>
+                            all
+                            <br> {{ ALL }}
+                        </h3>
+                    </div>
                 </div>
-                <div class="column is-3">
-                    <h3>
-                        ALL TIME
-                        <br> {{ ALL }}
-                    </h3>
-                </div>
-                <hr>
             </div>
         </div>
     </div>
