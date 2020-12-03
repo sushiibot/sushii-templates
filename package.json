@@ -1,7 +1,8 @@
 {
   "scripts": {
     "start": "node src/index.js",
-    "build": "tailwindcss build ./src/tailwind.css -o ./dist/tailwind.css"
+    "build": "tailwindcss build ./src/tailwind.css -o ./dist/tailwind.css",
+    "build-prod": "NODE_ENV=production tailwindcss build ./src/tailwind.css -o ./dist/tailwind.css"
   },
   "dependencies": {
     "handlebars": "^4.7.6",
