@@ -19,61 +19,64 @@
 
 <body class="p-2 bg-gray-1000 text-gray-200">
     <div class="container p-2">
-        <div class="p-3 flex items-center">
+        <div class="p-3 py-2 flex flex-nowrap items-center">
             <!-- Avatar -->
-            <div class="relative mr-3">
+            <div class="relative mr-3 flex-none">
                 <img class="rounded-full w-20 shadow-md" src="{{ AVATAR_URL }}">
                 <!-- Online status -->
                 <div class="rounded-full w-4 h-4 ring-4 bg-green-400 ring-gray-1000 absolute bottom-0 right-1 z-10">
                 </div>
             </div>
             <!-- Userinfo -->
-            <div class="w-full self-end">
-                <h1 class="text-4xl font-medium leading-5">
+            <div class="flex-1 self-center min-w-0">
+                <h1 class="w-full py-2 text-4xl font-medium truncate">
                     {{ USERNAME }}
-                    <br>
-                    <span class="text-lg text-gray-500">#{{ DISCRIMINATOR }}</span>
                 </h1>
+                <h2 class="text-lg leading-4 text-gray-500">
+                    #{{ DISCRIMINATOR }}
+                </h2>
             </div>
         </div>
         <div class="grid grid-cols-2 gap-x-3">
             <!-- Left side -->
             <div>
                 <!-- Badges and emojis -->
-                <div class="p-3 pt-0 h-10">
+                <div class="p-2 pt-1 h-10">
                     {{#if IS_PATRON }}
-                    <img class="w-6 inline-block" src="{{ BASE_URL }}/static/img/{{ PATRON_EMOJI }}.png">
+                    <img class="w-6" src="{{ BASE_URL }}/static/img/{{ PATRON_EMOJI }}.png">
                     {{/if}}
+                    <img class="w-6" src="{{ BASE_URL }}/static/img/{{REP_LEVEL}}.png">
                 </div>
                 <!-- Rep and Fishies -->
-                <div class="p-3 pt-0 grid grid-cols-2">
-                    <div>
-                        <p class="inline-block text-2xl font-medium">{{ REP }}</p>
-                        <p class="text-gray-400">
+                <!-- <div class="mb-2 p-2 px-3 grid grid-cols-2 rounded bg-gradient-to-br from-purple-400 via-pink-500 to-red-500"> -->
+                <div class="mb-2 p-2 pb-1 px-3 grid grid-cols-2 rounded-lg shadow-md bg-gradient-to-br from-purple-400 via-blue-500 to-teal-500 ">
+                    <p class="text-2xl font-medium leading-5">
+                        {{ REP }}
+                        <br>
+                        <span class="text-gray-200 text-base font-normal">
                             rep
-                            <img class="w-5 inline-block" src="{{ BASE_URL }}/static/img/{{REP_LEVEL}}.png">
-                        </p>
-                    </div>
-                    <div class="text-right">
-                        <p class="inline-block text-2xl font-medium">{{ FISHIES }}</p>
-                        <p class="text-gray-400">
+                        </span>
+                    </p>
+                    <p class="text-2xl font-medium leading-5 text-right">
+                        {{ FISHIES }}
+                        <br>
+                        <span class="text-gray-200 text-base font-normal">
                             fishies
-                            <img class="w-5 inline-block" src="{{ BASE_URL }}/static/img/fishy.png">
-                        </p>
-                    </div>
+                        </span>
+                    </p>
                 </div>
                 <!-- Level and XP bars -->
-                <div class="p-3 bg-gray-900 rounded">
+                <div class="p-3 bg-gray-900 rounded shadow-md">
                     {{#*inline "level" }}
-                        <div class="flex justify-between items-end">
-                            <p class="leading-4">
+                        <div class="relative">
+                            <p class="leading-4 inline">
                                 {{ name }}
                                 <br>
-                                <span class="text-3xl font-medium">
+                                <span class="text-2xl font-medium">
                                     {{ level }}
                                 </span>
                             </p>
-                            <p class="text-sm text-gray-500">
+                            <p class="text-sm text-gray-500 absolute bottom-0 right-0">
                                 {{ xp }} / {{ level_xp }} XP
                             </p>
                         </div>
@@ -87,21 +90,20 @@
                 </div>
             </div>
             <!-- Ranking -->
-            <div class="p-3 bg-gray-900 rounded">
-                <h6 class="text-2xl font-medium">
+            <div class="p-3 bg-gray-900 rounded shadow">
+                <p>
                     rank
-                </h6>
+                </p>
                 <div class="mt-1 grid grid-rows-4 gap-4">
                     {{#*inline "rank" }}
-                        <div class="flex justify-between items-center">
-                            <p>
-                                <span class="text-4xl font-medium">
-                                    {{ rank }}
-                                </span>
-                                <span class="text-sm text-gray-600">
-                                    / {{ total }}
-                                </span>
-                            </p>
+                        <div class="flex no-wrap justify-between items-center">
+                            <div class="flex-grow-0">
+                                <p class="truncate text-sm text-gray-600 w-36">
+                                    <span class="text-gray-200 text-4xl font-medium">
+                                        {{ rank ~}}
+                                    </span>/{{ total }}
+                                </p>
+                            </div>
                             <p class="text-gray-500">
                                 {{ name }}
                             </p>
