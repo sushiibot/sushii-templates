@@ -16,10 +16,9 @@
         }
     </style>
 </head>
-
-<body class="p-2 bg-gray-1000 text-gray-200">
+<body class="text-gray-200 bg-gray-1000">
     <div class="container p-2">
-        <div class="p-3 py-2 flex flex-nowrap items-center">
+        <div class="p-3 py-1 flex flex-nowrap items-center">
             <!-- Avatar -->
             <div class="relative mr-3 flex-none">
                 <img class="rounded-full w-20 shadow-md" src="{{ AVATAR_URL }}">
@@ -37,19 +36,21 @@
                 </h2>
             </div>
         </div>
+    </div>
+    <div class="p-2 bg-gray-1000">
+        <!-- Badges and emojis -->
+        <div class="p-2 pt-1 h-10">
+            {{#if IS_PATRON }}
+            <img class="w-6" src="{{ BASE_URL }}/static/img/{{ PATRON_EMOJI }}.png">
+            {{/if}}
+            <img class="w-6" src="{{ BASE_URL }}/static/img/{{REP_LEVEL}}.png">
+        </div>
         <div class="grid grid-cols-2 gap-x-3">
             <!-- Left side -->
             <div>
-                <!-- Badges and emojis -->
-                <div class="p-2 pt-1 h-10">
-                    {{#if IS_PATRON }}
-                    <img class="w-6" src="{{ BASE_URL }}/static/img/{{ PATRON_EMOJI }}.png">
-                    {{/if}}
-                    <img class="w-6" src="{{ BASE_URL }}/static/img/{{REP_LEVEL}}.png">
-                </div>
                 <!-- Rep and Fishies -->
                 <!-- <div class="mb-2 p-2 px-3 grid grid-cols-2 rounded bg-gradient-to-br from-purple-400 via-pink-500 to-red-500"> -->
-                <div class="mb-2 p-2 pb-1 px-3 grid grid-cols-2 rounded-lg shadow-md bg-gradient-to-br from-purple-400 via-blue-500 to-teal-500 ">
+                <div class="mb-2 p-2 pt-3 px-3 grid grid-cols-2 rounded-lg shadow-md bg-gradient-to-br from-purple-400 via-blue-500 to-teal-500 ">
                     <p class="text-2xl font-medium leading-5">
                         {{ REP }}
                         <br>
@@ -66,7 +67,7 @@
                     </p>
                 </div>
                 <!-- Level and XP bars -->
-                <div class="p-3 bg-gray-900 rounded shadow-md">
+                <div class="p-3 pt-2 bg-gray-900 rounded shadow-md">
                     {{#*inline "level" }}
                         <div class="relative">
                             <p class="leading-4 inline">
@@ -90,11 +91,11 @@
                 </div>
             </div>
             <!-- Ranking -->
-            <div class="p-3 bg-gray-900 rounded shadow">
+            <div class="p-3 bg-gray-900 rounded shadow ">
                 <p>
                     rank
                 </p>
-                <div class="mt-1 grid grid-rows-4 gap-4">
+                <div class="mt-1 grid grid-rows-4 gap-2">
                     {{#*inline "rank" }}
                         <div class="flex no-wrap justify-between items-center">
                             <div class="flex-grow-0">
