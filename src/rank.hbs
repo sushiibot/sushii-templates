@@ -40,7 +40,7 @@
         <!-- Badges and emojis -->
         <div class="p-2 pt-0 h-10">
             {{#if IS_PATRON }}
-            <img class="w-6 inline" src="{{ BASE_URL }}/static/img/{{ PATRON_EMOJI }}.png" />
+            <img class="w-6 inline" src="{{ PATRON_EMOJI }}" />
             {{/if}}
             <img class="ml-2 w-6 inline" src="{{ BASE_URL }}/static/img/{{REP_LEVEL}}.png" />
         </div>
@@ -92,7 +92,7 @@
                         </div>
                     {{/inline}}
                     {{#> level
-                        name="level"
+                        name="server level"
                         level=LEVEL
                         xp=CURR_XP
                         level_xp=REQ_XP
